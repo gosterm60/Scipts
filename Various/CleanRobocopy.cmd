@@ -1,0 +1,1 @@
+del "C:\Program Files\Cobian Backup 11\Logs\*.*" /F /Q

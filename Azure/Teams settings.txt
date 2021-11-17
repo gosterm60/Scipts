@@ -1,0 +1,9 @@
+64bit:
+Import-Module SkypeOnlineConnector
+Import-Module MSOnline
+$Session = New-CsOnlineSession
+Import-PSSession $Session
+Get-csonlineuser -identity username@domainname.com
+
+Get-csonlineuser -identity username@domainname.com |fl onprem*
+Get-csonlineuser -identity username@domainname.com |fl hosting*
