@@ -1,0 +1,8 @@
+import-module activedirectory
+$sourceuser  = read-host "Please enter your source user dear Admin"
+$destinationuser = read-host "Please enter your destination user dear Admin"
+$User = Get-ADUser -Identity $sourceuser -Properties *;
+$GroupMembership = ($user.memberof | % { (Get-ADGroup $_).Name; }) -join ';';
+$GroupMembership.split(";") | out-file C:\temp\prenos_group\member.txt 
+$groups= get-content -exclude *u_users_home*, *portno* C:\temp\prenos_group\member.txt 
+foreach ($groups in get-content C:\temp\prenos_group\member.txt) {Add-ADGroupMember $groups $destinationuser}

@@ -1,0 +1,1 @@
+dsquery computer -inactive 16 -limit 0 >>c:\admin\inactive-computers.txt

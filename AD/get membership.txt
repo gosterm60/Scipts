@@ -1,0 +1,1 @@
+(GET-ADUSER –Identity kilianp –Properties MemberOf | Select-Object MemberOf).MemberOf

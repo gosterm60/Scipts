@@ -1,0 +1,1 @@
+Get-ADGroupmember -identity S_PrintNightmare_Fix | select name | Export-Csv -path C:\temp\print.csv
