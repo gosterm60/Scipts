@@ -1,0 +1,24 @@
+ docker run -d -p 9000:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+
+
+
+docker run -d -p 1433:1433 --restart=always microsoft/mssql-server-linux:2017-GA
+
+
+
+
+Running docker
+
+
+docker ps
+docker image ls -a
+
+
+Auto start image:
+docker update --restart=always sleepy_kare
+docker update --restart=always some-rabbit
+
+No auto start:
+docker update --restart=no cranky_gates
+
+sudo docker run --rm -it --entrypoint=/                                                                                                                                                             bin/bash m7_pull_test

@@ -1,0 +1,5 @@
+docker service update poratiner --force
+docker service rollback portainer_portainer
+docker start 5c28127e47ae
+docker update --restart unless-stopped 5c28127e47ae
+ 

@@ -1,0 +1,12 @@
+Update:
+    docker pull lejtest portejner imidž
+    docker stop portainer
+    docker rm portainer
+    docker run portainer with latest imidž
+
+????
+
+docker swarm join-token manager
+To add a manager to this swarm, run the following command:
+
+docker swarm update
