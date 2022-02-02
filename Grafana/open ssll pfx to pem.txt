@@ -1,0 +1,40 @@
+openssl pkcs12 -in "E:\cert\geniljgrafana02.pfx" -nocerts -out "E:\cert\key.pem"
+openssl pkcs12 -in "E:\cert\geniljgrafana02.pfx" -clcerts -nokeys -out "E:\cert\cert.pem"
+
+openssl rsa -in "E:\cert\key.pem" -out "E:\cert\server.key"
+
+
+openssl pkcs12 -in "E:\cert\geninggrafana01.pfx" -nocerts -out "E:\cert\key.pem"
+openssl pkcs12 -in "E:\cert\geninggrafana01.pfx" -clcerts -nokeys -out "E:\cert\cert.pem"
+
+openssl rsa -in "E:\cert\key.pem" -out "E:\cert\server.key"
+-----------------------------
+
+pravice niso bile ok tak oda sem preselil: 
+cp /home/administrator/cert.pem /etc/grafana/cert.pem
+cp /home/administrator/server.key /etc/grafana/server.key
+
+
+nič ni bilo ok:
+sudo chmod 400 cert.pem
+sudo chmod 400 server.key
+
+
+sudo chown root:grafana /home/administrator/cert.pem
+sudo chown root:grafana /home/administrator/server.key
+
+chown :grafana /home/administrator/cert.pem
+chown :grafana /home/administrator/server.key
+
+
+  203  nano grafana.ini
+  204  service grafana-server restart
+  205  netstat -tlp
+
+sudo chmod 777 /home/administrator/cert.pem
+sudo chmod 777 /home/administrator/server.key
+
+chmod 755 /home/administrator/
+
+chmod -R 755 /home/administrator/
+

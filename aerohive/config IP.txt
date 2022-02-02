@@ -1,0 +1,6 @@
+Int mgt0 ip 10.100.13.164/24
+ip route default gateway 10.100.13.1
+
+admin
+aerohive
+show int mgt0

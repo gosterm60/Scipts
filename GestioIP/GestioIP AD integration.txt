@@ -1,0 +1,61 @@
+1)
+sudo nano /etc/httpd/conf.d/gestioip.conf:
+
+
+<Directory "/var/www/html/gestioip">
+#    AddHandler cgi-script .cgi
+#    AddDefaultCharset utf8
+#    AllowOverride None
+#    DirectoryIndex index.cgi
+#    Options +ExecCGI +FollowSymLinks
+
+#    AuthFormProvider file
+#    AuthType form
+#    AuthName GestioIP
+#    Session On
+#    SessionEnv On
+#    SessionCookieName session path=/
+#    SessionCryptoPassphrase vul2koiZ7NKUBe
+#    AuthUserFile /etc/httpd/conf.d/users-gestioip
+#    AuthGroupFile /usr/share/gestioip/etc/apache/apache-groups
+
+#    Include /usr/share/gestioip/etc/apache/apache_ldap.conf
+
+ AddHandler cgi-script .cgi
+        AddDefaultCharset utf8
+        AllowOverride None
+        DirectoryIndex index.cgi
+        Options +ExecCGI +FollowSymLinks
+
+        AuthName "GestioIP - Authentication against AD"
+        AuthType Basic
+#    AuthType form
+#       LDAPVerifyServerCert off
+        AuthBasicProvider ldap
+
+        # user to connect to the LDAP/MS-Active Directory (only read access required)
+        AuthLDAPBindDN ******@*****.si
+        AuthLDAPBindPassword ******
+#        AuthLDAPURL "LDAPS://****IP****:389/DC=***,DC=***,DC=si?sAMAccountName?sub?(objectClass=*)" NONE
+       AuthLDAPURL "LDAPS://****IP****:636/DC=***,DC=***,DC=si?sAMAccountName?sub?(objectClass=*)" NONE
+
+
+#        Require valid-user
+#       Require ldap-group CN=Domain Users,CN==****,DC==****,DC==****,DC=SI
+#       Require ldap-group CN=Domain Users,CN=Users,DC=DOMAIN,DC=COM
+#        Require ldap-group CN=*****Administrators,OU=User Groups,OU=Groups,OU=****DC=****,DC=****,DC=SI
+        Require ldap-group CN=*****_gestioip,OU=Server Security Groups,OU=Infrastructure objects,DC=****,DC=****,DC=SI
+
+
+        Order allow,deny
+        Allow from all
+
+        ErrorDocument 401 /gestioip/errors/error401.html
+        ErrorDocument 403 /gestioip/errors/error403.html
+        ErrorDocument 404 /gestioip/errors/error404.html
+
+
+2)
+ sudo nano /etc/httpd/conf/httpd.conf
+LDAPVerifyServerCert off
+
