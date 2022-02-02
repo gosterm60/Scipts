@@ -1,0 +1,1 @@
+Invoke-Command -ComputerName ***FQDN*** -FilePath D:\test\OutsideIp\outsideIP.ps1

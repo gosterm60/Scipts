@@ -1,0 +1,13 @@
+docker ps
+
+
+Restartal vse agente. potem še portainer/agent:latest in še enkrat portainer/agent in jedelalo
+
+portainer/agent
+
+portainer/portainer-ce:latest 
+portainer/agent:latest
+
+docker stop a2f0ae3f5529
+docker stop 22372422c568
+

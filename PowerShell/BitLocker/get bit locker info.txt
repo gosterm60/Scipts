@@ -1,0 +1,3 @@
+Get-ADObject -SearchBase 'CN=****,OU=****,OU=****, OU=****,DC=***,DC=***,DC=si' -Filter {objectclass -eq 'msFVE-RecoveryInformation'} -Properties msfve-recoverypassword >>c:\admin\log.log
+
+Get-ADObject -SearchBase 'OU=Notebooks, OU=*****,DC=***,DC=***,DC=si' -Filte {objectclass -eq 'msFVE-RecoveryInformation'} -Properties msfve-recoverypassword >>c:\admin\log.log

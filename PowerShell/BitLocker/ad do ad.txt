@@ -1,0 +1,4 @@
+
+enter-pssession ***FQDN***
+manage-bde -protectors -get c: 
+manage-bde -protectors -adbackup c: -id '{D557CE4B-03AC-4E53-80D3-A03D46E117D2}'

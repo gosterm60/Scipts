@@ -1,0 +1,3 @@
+D:\Programme\Windows Defender readines tool
+
+ .\DG_Readiness_Tool_v3.6.ps1  -Ready

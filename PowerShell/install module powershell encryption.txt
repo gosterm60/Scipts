@@ -1,0 +1,21 @@
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Install-PackageProvider -Name NuGet -Force
+
+
+
+
+
+
+
+
+
+
+
+
+
+mogoče:
+
+
+
+[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted

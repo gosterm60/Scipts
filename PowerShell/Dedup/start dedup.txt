@@ -1,0 +1,4 @@
+Start-DedupJob –Volume F: –Type Optimization -Priority High
+
+get-dedupjob
+get-dedupstatus

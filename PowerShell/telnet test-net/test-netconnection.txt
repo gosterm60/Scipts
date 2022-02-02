@@ -1,0 +1,5 @@
+Test-NetConnection -ComputerName google.com -Port 80
+
+Test-NetConnection -ComputerName ***FQDN*** -Port 143
+
+Test-NetConnection -ComputerName ***FQDN*** -Port 1414

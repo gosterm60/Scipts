@@ -1,0 +1,20 @@
+
+
+Install-Module PowershellGet -Force
+Update-Module PowershellGet
+Set-ExecutionPolicy RemoteSigned
+Install-Module -Name ExchangeOnlineManagement
+Import-Module ExchangeOnlineManagement; Get-Module ExchangeOnlineManagement
+Update-Module -Name ExchangeOnlineManagement
+Import-Module ExchangeOnlineManagement; Get-Module ExchangeOnlineManagement
+Uninstall-Module -Name ExchangeOnlineManagement
+ get-UnifiedGroup -Identity "team 6"
+get-UnifiedGroup -Identity "infrastructure" | Select WelcomeMessageEnabled
+PS C:\temp> get-UnifiedGroup -Identity "team 6" | Select WelcomeMessageEnabled
+
+WelcomeMessageEnabled
+---------------------
+                False
+
+
+PS C:\temp> get-UnifiedGroup -Identity "infrastructure" | Select WelcomeMessageEnabled

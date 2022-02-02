@@ -1,0 +1,15 @@
+enter-pssession -computername ***FQDN***
+cmd
+cd "C:\Program Files\telegraf\"
+.\telegraf.exe --service install
+sc.exe config telegraf start= delayed-auto 
+net start telegraf
+exit
+
+enter-pssession -computername ***FQDN***
+cmd
+cd "C:\Program Files\telegraf\"
+.\telegraf.exe --service install
+sc.exe config telegraf start= delayed-auto 
+net start telegraf
+exit

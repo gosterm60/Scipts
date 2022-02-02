@@ -1,0 +1,2 @@
+Get-ADComputer -SearchBase 'OU=Notebooks, OU=***,DC=***,DC=***,DC=si' -Filter {OperatingSystem -NotLike '*server*'} -Property * | Format-Table Name -Wrap -Auto >>c:\admin\notebooks.txt
+Get-ADComputer -SearchBase 'OU=Desktops, OU=****,DC=***,DC=***,DC=si' -Filter {OperatingSystem -NotLike '*server*'} -Property * | Format-Table Name -Wrap -Auto >>c:\admin\Desktops.txt

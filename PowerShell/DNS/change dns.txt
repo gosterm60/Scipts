@@ -1,0 +1,5 @@
+Enter-PSSession srveev06
+$Adapters = Get-WmiObject Win32_NetworkAdapterConfiguration | Where-Object {$_.DHCPEnabled -ne 'True' -and $_.DNSServerSearchOrder -ne $null}
+$Adapters | ForEach-Object {$_.DNSServerSearchOrder}
+$NewDnsServerSearchOrder = "10.***.***.13","10.***.***.39"
+$Adapters | ForEach-Object {$_.SetDNSServerSearchOrder($NewDnsServerSearchOrder)} | Out-Null

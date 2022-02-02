@@ -1,0 +1,5 @@
+ Start-Transcript -Path "D:\powershell\log.txt" -Append  
+
+koda koda koda koda
+
+ Stop-Transcript  

@@ -1,0 +1,2 @@
+Invoke-Command -computername ***FQDN*** {restart-service telegraf –passthru}
+Invoke-Command -computername ***FQDN*** {restart-service telegraf –passthru}

@@ -1,0 +1,3 @@
+$session = New-CsOnlineSession -OverrideAdminDomain “****tennant***”
+
+Import-PSSession $session -AllowClobber -Verbose

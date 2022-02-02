@@ -1,0 +1,11 @@
+
+enter-pssession -computername ***FQDN***
+Add-Content -Path "C:\Program Files\telegraf\telegraf.conf" -Value "[[inputs.win_services]]"
+Add-Content -Path "C:\Program Files\telegraf\telegraf.conf" -Value 'interval = "60s"'
+Add-Content -Path "C:\Program Files\telegraf\telegraf.conf" -Value "service_names = []"
+net stop telegraf
+net start telegraf
+exit
+
+
+enter-pssession -computername ***FQDN***
