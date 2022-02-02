@@ -1,0 +1,11 @@
+UbuntuLinuxName
+
+change name:
+sudo hostnamectl set-hostname UbuntuLinuxName
+nano /etc/hosts
+	127.0.0.1   linuxize
+
+nano /etc/cloud/cloud.cfg
+	preserve_hostname: true
+
+hostnamectl

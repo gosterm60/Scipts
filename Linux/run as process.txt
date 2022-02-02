@@ -1,0 +1,4 @@
+telegraf --config telegrafcisco.conf &
+ps -f
+ps -ef
+kill -9 3609

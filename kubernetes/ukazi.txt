@@ -1,0 +1,30 @@
+kubectl get pods --all-namespaces
+kubectl get nodes
+
+
+
+kubectl delete pod portainer-agent-56896bfbb7-72r5h --namespace=portainer
+
+
+master:
+kubeadm token create --print-join-command
+
+kubectl delete namespace/portainer
+
+
+kubectl describe pods --namespace=portainer
+
+
+kubeadm reset
+rm /etc/cni/net.d/10-calico.conflist
+rm /etc/cni/net.d/10-flannel.conflist
+rm /etc/cni/net.d/calico-kubeconfig
+rm /etc/kubernetes/kubelet.conf 
+rm /etc/kubernetes/pki/ca.crt 
+
+systemctl status kubelet
+systemctl status docker
+
+
+https://github.com/justmeandopensource/kubernetes/blob/master/docs/install-cluster-ubuntu-20.md
+

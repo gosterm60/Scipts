@@ -1,0 +1,40 @@
+to do snmp telegraf
+https://support.kemptechnologies.com/hc/en-us/articles/201121195-How-to-enable-SNMP-and-use-the-MIBs-for-Monitoring-the-LoadMaster
+
+cp /home/administrator/mibs/7.2.50.0.18765.RELEASE-B100-MIB.txt /usr/share/snmp/mibs/ietf/B100-MIB
+cp /home/administrator/mibs/7.2.50.0.18765.RELEASE-CERTS-MIB.txt /usr/share/snmp/mibs/ietf/CERTS-MIB
+cp /home/administrator/mibs/7.2.50.0.18765.RELEASE-IPVS-MIB.txt /usr/share/snmp/mibs/ietf/IPVS-MIB
+cp /home/administrator/mibs/7.2.50.0.18765.RELEASE-ONE4NET-MIB.txt /usr/share/snmp/mibs/ietf/ONE4NET-MIB
+cp /home/administrator/mibs/MOBOTIX-MIB /usr/share/snmp/mibs/ietf/MOBOTIX-MIB
+
+....................
+
+nano /lib/systemd/system/telegrafkemp.service
+
+
+[Unit]
+Description=The plugin-driven server agent for reporting metrics into InfluxDB
+Documentation=https://github.com/influxdata/telegraf
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/default/telegraf
+User=telegraf
+ExecStart=/usr/bin/telegraf -config /etc/telegraf/telegrafsnmpkemp.conf -config-directory /etc/telegraf/telegraf.d $TELEGRAF_OPTS
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartForceExitStatus=SIGPIPE
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target
+
+...............
+
+
+systemctl start telegrafkemp.service
+systemctl status telegrafkemp.service
+systemctl daemon-reload
+
+
+sudo apt install snmp snmpd snmp-mibs-downloader

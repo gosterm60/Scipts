@@ -1,0 +1,124 @@
+sudo apt-get update
+sudo apt-get install docker.io
+#docker ––version
+sudo systemctl enable docker
+#sudo systemctl status docker
+sudo systemctl start docker
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
+sudo apt-get install curl
+sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+
+
+
+sudo apt-get install kubeadm kubelet kubectl
+sudo apt-mark hold kubeadm kubelet kubectl
+#kubeadm version
+
+--------------------------
+Driver - na vseh
+nano /etc/docker/daemon.json
+
+{
+"exec-opts": ["native.cgroupdriver=systemd"]
+}
+------------
+Swap - na vseh
+#free -h
+#sudo swapoff -a
+nano /etc/rc.local
+#!/bin/bash
+swapoff -a
+systemctl start kubelet
+docker start (docker ps -a -q)
+docker start (docker ps -a -q)
+
+chmod +x /etc/rc.local
+---------------
+Master
+sudo hostnamectl set-hostname master-node
+
+kubeadm init --apiserver-advertise-address=10.***.***.29 --pod-network-cidr=10.244.0.0/16
+
+# kubeadm init --pod-network-cidr=10.244.0.0/16
+----------------
+
+Master:
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+y
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/manifests/calico.yaml
+
+kubectl get pods --all-namespaces
+kubectl get nodes
+
+----------
+Worker:
+url https://docs.projectcalico.org/manifests/calico.yaml -O
+
+kubeadm join 10.***.***.29:6443 --token car4is.qzvvt9u6h0lmvdqs --discovery-token-ca-cert-hash sha256:*******************
+
+----------------------------
+
+
+
+
+
+
+ls
+
+cd /etc/cni 
+rmdir net.d
+
+cd $HOME/.kube/
+cd /etc/cni/n
+root@geniljkubern01:~/.kube# rm config
+
+
+/var/lib/kubelet
+node:
+nano /etc/docker/daemon.json
+{
+"exec-opts": ["native.cgroupdriver=systemd"]
+}
+
+
+
+-------------
+Disable swap
+
+nano /etc/rc.local
+
+
+#!/bin/bash
+swapoff -a
+systemctl start kubelet
+docker start (docker ps -a -q)
+docker start (docker ps -a -q)
+
+Change mode:
+chmod +x /etc/rc.local
+
+kubeadm reset
+y
+cd /etc/cni/net.d/
+rm /etc/cni/net.d/10-calico.conflist
+rm /etc/cni/net.d/10-flannel.conflist
+rm /etc/cni/net.d/calico-kubeconfig
+
+rm /etc/cni/net.d/portainer-agent-k8s.yaml
+
+worker:
+
+rm /etc/kubernetes/kubelet.conf 
+rm /etc/kubernetes/pki/ca.crt 
+
+Portainer node:
+curl -L https://downloads.portainer.io/portainer-agent-k8s-nodeport.yaml -o portainer-agent-k8s.yaml; kubectl apply -f portainer-agent-k8s.yaml
+
+
+
+
+

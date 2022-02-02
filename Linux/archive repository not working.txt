@@ -1,0 +1,16 @@
+The simplest solution is to do the following two steps:
+
+Backup your sources list sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
+Open the sources file /etc/apt/sources.list and rename all the instances of us.archive or archive in
+
+http://us.archive.ubuntu.com/ubuntu/
+
+to
+
+http://old-releases.ubuntu.com/ubuntu/
+
+Also do the same for the http://security.ubuntu.com/ubuntu/dists/saucy-security/universe/binary-i386/Packages
+
+Run sudo apt-get update after doing the above.
+
+That should fix the issue.

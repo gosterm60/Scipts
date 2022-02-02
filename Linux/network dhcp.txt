@@ -1,0 +1,12 @@
+/etc/netplan/01-netcfg.yaml
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens160:
+      dhcp4: true
+Follow with:
+
+sudo netplan generate
+sudo netplan apply

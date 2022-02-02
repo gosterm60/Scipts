@@ -1,0 +1,40 @@
+ sudo mkdir /mnt/cdrom
+    4  mkdir /mnt/cdrom
+    5  mount /dev/cdrom /mnt/cdrom
+    6  ls /mnt/cdrom
+    7  tar xzvf /mnt/cdrom/VMwareTools-10.3.23-17030940.tar.gz  -C /tmp/
+    8  cd /tmp
+    9  ls
+   10  cd vmware-tools-distrib/
+   12  ./vmware-install.pl
+   13  reboot
+
+ip -br -c link show
+ if up ens192
+ ifup
+
+
+systemctl restart networking.service
+
+
+
+---------------
+Network
+/etc/network# nano interfaces
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+allow-hotplug ens192
+auto ens192
+iface ens192 inet dhcp
+------------
+ssh install:
+
+nano /etc/apt/sources.list
+	deb http://deb.debian.org/debian/ stable main contrib non-free
+	deb-src http://deb.debian.org/debian/ stable main contrib non-free
+
+apt-get install openssh-server
+
+

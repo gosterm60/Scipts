@@ -1,0 +1,5 @@
+TCP:
+iperf3.exe -c FQDN -b 1k -t 28800 -l 5240
+
+UDP:
+iperf3.exe -c FQDN -u -t 28800

@@ -1,0 +1,14 @@
+#ifconfig - verify ens160
+#/etc/netplan/01-netcfg.yaml
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens160:
+     dhcp4: no
+     addresses: [10.***.***.***/24]
+     gateway4: 10.***.***.254
+     nameservers:
+       search: [****.***.si]
+       addresses: [10.***.***.***,10.***.***.***]

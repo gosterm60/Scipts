@@ -1,0 +1,9 @@
+find . -type f -name "abc*" 
+
+$ sudo df -h | grep -r -w "jupyterhub_config.py"
+
+
+du -sh /*
+
+find in files
+grep -rn '***STRING***'

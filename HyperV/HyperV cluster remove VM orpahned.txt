@@ -1,0 +1,1 @@
+(Get-WmiObject -namespace root\mscluster -class MsCluster_ResourceGroup -filter "name='****VM_NAME***'").DestroyGroup()

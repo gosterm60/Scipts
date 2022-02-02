@@ -1,0 +1,28 @@
+
+df
+
+
+Poveèaj disk
+restart
+
+sudo growpart /dev/sda 3
+
++
+resize2fs /dev/sda 3
+
+preveri stanje
+df -h
+
+LVM:
+lsblk
+resize2fs /dev/sda 3
+lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv 
+resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+
+èe zgornji ne dela:
+pvresize /dev/sda3
+lvresize -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
+resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+
+
+
