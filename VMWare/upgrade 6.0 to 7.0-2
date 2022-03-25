@@ -1,0 +1,110 @@
+esxcli network firewall ruleset set -e true -r httpClient
+
+esxcli software sources profile list -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml | grep -i ESXi-6.5
+
+esxcli software profile update -p ESXi-6.5.0-20210704001-standard -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml
+
+esxcli software profile update -p ESXi-6.5.0-20201004001-standard -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml
+
+esxcli software profile update -p ESXi-7.0U2a-17867351-standard -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml --no-hardware-warning
+
+https://communities.vmware.com/t5/vSphere-Upgrade-Install/How-to-upgrade-VMware-vsphere-6-0-to-vsphere-7-0/td-p/1828625
+
+
+
+1) error ker ni želel iz 6.0 na 6.5
+
+esxcli network firewall ruleset set -e true -r httpClient
+esxcli software profile update -p ESXi-6.0.0-20200204001-standard \
+-d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml
+esxcli network firewall ruleset set -e false -r httpClient
+
+2) 6.5 na 7.0 manjkalo prostora dodal swap na hostu na lokalni datastore
+
+
+3)melanox remove
+esxcli software vib list | grep Mell
+esxcli network nic list
+esxcli software vib remove -n scsi-mpt3sas
+
+esxcli software vib remove -n amsd
+esxcli software vib remove -n ssacli
+
+esxcli network firewall ruleset set -e true -r httpClient
+
+https://esxi-patches.v-front.de/ESXi-6.5.0.html
+
+esxcli software profile update -p ESXi-6.5.0-20210704001-standard -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml
+
+esxcli software profile update -p ESXi-6.7.0-20210304001-standard -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml --no-hardware-warning
+
+esxcli software profile update -p ESXi-7.0bs-16321839-standard -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml --no-hardware-warning
+
+
+[E5700_SSD_VmwVol_08] GENINGVAPP03/GENINGVAPP03.vmx INFRA-NG
+
+esxcli software profile update -p ESXi-7.0U2a-17867351-standard -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml
+
+esxcli software profile update -p ESXi-7.0b-16324942-standard -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml --no-hardware-warning
+esxcli software profile update -p ESXi-7.0U2a-17867351-standard -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml --no-hardware-warning
+
+
+
+VMware-ESXi-7.0.2.-17867351-LNV-20210528.zip
+
+
+ VIB QLogic_bootbank_scsi-bfa_3.2.6.0-1OEM.550.0.0.1331820 requires vmkapi_2_2_0_0, but the requirement cannot be satisfied within the ImageProfile.
+ VIB Fusion-io_bootbank_scsi-iomemory-vsl_3.2.6.1219-1OEM.550.0.0.1198610 requires com.vmware.driverAPI-9.2.2.0, but the requirement cannot be satisfied within the ImageProfile.
+ VIB Mellanox_bootbank_net-mst_4.0.0.20-1OEM.550.0.0.1331820 requires com.vmware.driverAPI-9.2.2.0, but the requirement cannot be satisfied within the ImageProfile.
+ VIB QLogic_bootbank_scsi-bfa_3.2.6.0-1OEM.550.0.0.1331820 requires com.vmware.driverAPI-9.2.2.0, but the requirement cannot be satisfied within the ImageProfile.
+ VIB Fusion-io_bootbank_scsi-iomemory-vsl_3.2.6.1219-1OEM.550.0.0.1198610 requires vmkapi_2_2_0_0, but the requirement cannot be satisfied within the ImageProfile.
+ VIB Mellanox_bootbank_net-mst_4.0.0.20-1OEM.550.0.0.1331820 requires vmkapi_2_2_0_0, but the requirement cannot be satisfied within the ImageProfile.
+
+
+esxcli software vib remove -n scsi-bfa
+esxcli software vib remove -n scsi-iomemory-vsl
+esxcli software vib remove -n net-mst
+
+VIB HPE_bootbank_amsd_600.11.4.5-18.2494585 requires esx-version << 6.5.0, but the requirement cannot be satisfied within the ImageProfile.
+ VIB HPE_bootbank_ssacli_3.47.6.0-6.0.0.2768847 requires esx-version = 6.0.0, but the requirement cannot be satisfied within the ImageProfile.
+ 
+esxcli software vib remove -n amsd
+esxcli software vib remove -n ssacli
+
+
+esxcli software vib update -d /vmfs/volumes/5df79b11-54365556-62c1-0017a4770024/ISO/VMware-ESXi-7.0U1d-17551050-depot.zip
+
+esxcli software vib update -d /vmfs/volumes/5df79b11-54365556-62c1-0017a4770024/ISO/VMware-ESXi-7.0.0-16324942-HPE-700.0.0.10.5.5.32-Jun2020-depot.zip
+
+
+esxcli software vib update -d /vmfs/volumes/5df79b11-54365556-62c1-0017a4770024/ISO/VMware-ESXi-7.0U2a-17867351-depot.zip
+
+
+esxcli software vib update -d /vmfs/volumes/5df79b0a-71cbf034-532c-0017a4770014/ISO/VMware-ESXi-7.0.2-17867351-HPE-702.0.0.10.7.0.52-May2021-depot.zip
+esxcli software vib update -d /vmfs/volumes/5df79b0a-71cbf034-532c-0017a4770014/ISO/VMware-ESXi-7.0.0-16324942-HPE-700.0.0.10.5.5.32-Jun2020-depot.zip
+
+HP Gen8:
+nastavljanje swapa na datastore1
+esxcli software profile update -p ESXi-6.7.0-20210304001-standard -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml
+esxcli software vib update -d /vmfs/volumes/55a573f7-da11b91b-144f-0017a4770040/ISO/VMware-ESXi-7.0.0-16324942-HPE-700.0.0.10.5.5.32-Jun2020-depot.zip
+esxcli software vib update -d /vmfs/volumes/55a573f7-da11b91b-144f-0017a4770040/ISO/VMware-ESXi-7.0.2-17867351-HPE-702.0.0.10.7.0.52-May2021-depot.zip --no-hardware-warning
+
+esxcli software vib update -d /vmfs/volumes/5ff6c68e-ab0491be-fb06-0017a47700a8/ISO/VMware-ESXi-7.0.0-16324942-HPE-700.0.0.10.5.5.32-Jun2020-depot.zip
+esxcli software vib update -d /vmfs/volumes/5ff6c68e-ab0491be-fb06-0017a47700a8/ISO/VMware-ESXi-7.0.2-17867351-HPE-702.0.0.10.7.0.52-May2021-depot.zip
+
+esxcli software vib update -d /vmfs/volumes/5fbb738a-bd1ba2b0-67d4-9440c958b3a0/ISO/VMware-ESXi-7.0.0-16324942-HPE-700.0.0.10.5.5.32-Jun2020-depot.zip
+
+esxcli software vib update -d /vmfs/volumes/5ff6c68e-ab0491be-fb06-0017a47700a8/ISO/VMware-ESXi-7.0.2-17867351-HPE-702.0.0.10.7.0.52-May2021-depot.zip
+
+esxcli software profile update -p ESXi-7.0U2c-18426014-standard -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml
+
+esxcli software vib update -d /vmfs/volumes/5fbb738a-bd1ba2b0-67d4-9440c958b3a0/ISO/VMware-ESXi-7.0.2-17867351-HPE-702.0.0.10.7.0.52-May2021-depot.zip
+
+
+
+
+
+
+
+
+

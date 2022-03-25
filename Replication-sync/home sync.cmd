@@ -1,0 +1,1 @@
+robocopy.exe "\\dc1\Home" "\\nas02\osebni" /MIR /FFT /S /E /COPYALL /R:1 /W:1 /np /NFL /NDL /log:C:\admin\logs\osebni.txt

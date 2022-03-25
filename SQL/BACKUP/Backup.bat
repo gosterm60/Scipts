@@ -1,0 +1,1 @@
+sqlcmd -S xx\xx -U sa -P password -Q "BACKUP DATABASE Valmo TO DISK = N'F:\backupValmor55\Valmor.bkp' WITH FORMAT"

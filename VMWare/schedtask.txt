@@ -1,0 +1,9 @@
+2003
+C:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe -NoLogo -File "C:\admin\reporting\virtual1.ps1"
+
+2008
+C:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe
+C:\admin\reporting\virtual1.ps1
+
+
+Set-ExecutionPolicy RemoteSigned

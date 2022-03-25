@@ -1,0 +1,3 @@
+robocopy.exe "\\app\d$\www" "\\192.168.10.20\Backup\ToTape\Data\app\www" /MIR /FFT /S /E /R:1 /W:1 /np /NFL /NDL /log:C:\admin\logs\mgmt02-fileBackup.txt
+robocopy.exe "\\App-dev\d$\nexus" "\\192.168.10.20\Backup\ToTape\Data\app-dev\nexus" /MIR /FFT /S /E /R:1 /W:1 /np /NFL /NDL /log+:C:\admin\logs\mgmt02-fileBackup.txt
+robocopy.exe "\\App-dev\d$\www" "\\192.168.10.20\Backup\ToTape\Data\app-dev\www" /MIR /FFT /S /E /R:1 /W:1 /np /NFL /NDL /log+:C:\admin\logs\mgmt02-fileBackup.txt

@@ -1,0 +1,2 @@
+pazi na - pre d 
+ esxcli software vib install -d /tmp/VMW-ESX-6.0.0-qlnativefc-2.1.53.0-4870413/VMW-ESX-6.0.0-qlnativefc-2.1.53.0-offline_bundle-4870413.zip

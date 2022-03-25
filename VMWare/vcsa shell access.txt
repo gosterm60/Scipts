@@ -1,0 +1,14 @@
+enable ssh: 
+https://FQDN:5480
+access enable ssh
+administrator@localdomain.localdomain
+shell.set --enable true
+shell
+#authenticate
+shell
+
+
+if root disabled restart vcsa. Hopefully it shall be unlocked
+
+I Had root locked so I reseted the password and rebooted the VCSA
+sudo passwd root

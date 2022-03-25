@@ -1,0 +1,6 @@
+esxcli network nic list
+
+esxcli network nic down -n vmnicX
+
+
+esxcli network nic up -n vmnicX

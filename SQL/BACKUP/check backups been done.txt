@@ -1,0 +1,41 @@
+DECLARE @database VARCHAR(30) = '$xxxdatabase'
+DECLARE @days smallint = 30
+
+---------------------------------------------------------------
+
+SELECT
+       sysdb.name AS [Database]
+       ,bkup.description
+       ,bkup.backup_finish_date AS [Backup Finish Date]
+    ,CASE WHEN type = 'D' THEN 'Full backup'
+         WHEN type = 'I' THEN 'Differential'
+         WHEN type = 'L' THEN 'Log'
+         WHEN type = 'F' THEN 'File/Filegroup'
+         WHEN type = 'G' THEN 'Differential file'
+         WHEN type = 'P' THEN 'Partial'
+         WHEN type = 'Q' THEN 'Differential partial'
+         ELSE 'Unknown (' + type + ')'
+    END AS [Backup Type]
+       ,CASE WHEN bkup.is_snapshot=1 THEN 'Snapshot' ELSE 'Conventional' END AS [Snapshot backup]
+       ,(STR(ABS(DATEDIFF(day, GetDate(),(backup_finish_date))))) AS [Days Ago]
+       ,ceiling(bkup.backup_size /1048576) AS [Size MB]
+       ,cast((bkup.backup_size /1073741824) AS DECIMAL(9,2)) AS [Size GB]
+       ,datediff(minute, bkup.backup_start_date, bkup.backup_finish_date) AS [Mins] 
+       ,cast(cast(datediff(minute, bkup.backup_start_date, bkup.backup_finish_date) AS DECIMAL(8,3))/60 AS DECIMAL(8,1)) AS [Hours]
+       ,bmf.physical_device_name
+       ,server_name AS [Server Name]
+       ,user_name AS [User Name]
+       ,sysdb.crdate
+       ,first_lsn
+       ,last_lsn
+       ,checkpoint_lsn
+FROM
+       master.dbo.sysdatabases sysdb
+       LEFT OUTER JOIN msdb.dbo.backupset bkup ON RTRIM(bkup.database_name) = RTRIM(sysdb.name)
+       LEFT OUTER JOIN msdb.dbo.backupmediafamily bmf ON bkup.media_set_id = bmf.media_set_id  
+WHERE
+       bkup.backup_finish_date > DATEADD(DAY,-@days,GETDATE())  -- Last 30 days
+       AND sysdb.name = @database
+ORDER BY
+       [Database]
+       ,[Backup Finish Date] DESC

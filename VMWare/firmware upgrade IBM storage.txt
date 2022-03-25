@@ -1,0 +1,9 @@
+https://communities.vmware.com/t5/vSphere-Upgrade-Install/Unable-to-install-ESXi-5-5-or-6-after-ServeRAID-M5110e-firmware/td-p/1382632
+
+Download attached “MegaCli” and “Libstorelib.so” file
+Copy these two files also into “/opt/MegaCli”
+Modify the permission of the MegaCli and Libstorelib.so files to read/write/execute (7777)
+
+./MegaCli -ldinfo -lall -aall
+
+./MegaCli -AdpFwFlash -f lsi2208.rom -NoVerChk -a0

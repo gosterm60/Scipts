@@ -1,0 +1,7 @@
+use baza;
+GO
+DBCC loginfo
+GO
+
+Zakaj se Log file ne sprošèa?
+SELECT name, log_reuse_wait_desc FROM sys.databases; 
